@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION 2K25 - Tech Fest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: white;
+        }
+        .neon-text {
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+        }
+        .glow-border {
+            border: 2px solid rgba(255, 0, 255, 0.7);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+        .glowing-btn {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+            transition: transform 0.3s ease-in-out;
+        }
+        .glowing-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 1);
+        }
+        .hidden {
+            display: none;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        function showEventDetails() {
+            document.getElementById('event-details').classList.remove('hidden');
+            document.getElementById('event-details').scrollIntoView({ behavior: 'smooth' });
+        }
+        function downloadPoster() {
+            const link = document.createElement('a');
+            link.href = 'AION 2K25.jpg'; // Replace with actual poster URL
+            link.download = 'AION_2K25_Poster.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        function startConfetti() {
+            setInterval(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 160,
+                    origin: { y: 0.6 }
+                });
+            }, 2000);
+        }
+        window.onload = startConfetti;
+    </script>
+</head>
+<body class="font-sans smooth-scroll">
+    <div class="relative w-full h-screen flex flex-col items-center justify-center text-center bg-cover bg-no-repeat bg-center" style="background-image: url('your-poster-url.jpg');">
+        <div class="bg-black bg-opacity-70 p-10 rounded-lg glow-border">
+            <h1 class="text-6xl md:text-8xl font-extrabold neon-text">AION 2K25</h1>
+            <p class="text-xl md:text-3xl text-gray-300 mt-3">Where Technology Meets Creativity!</p>
+            <div class="mt-6">
+                <button onclick="showEventDetails()" class="glowing-btn px-8 py-4 text-lg font-semibold rounded-full">Event Details</button>
+            </div>
+        </div>
+    </div>
+    <section id="event-details" class="hidden text-center py-20 px-5">
+        <h2 class="text-5xl font-bold neon-text">Event Details</h2>
+        <p class="mt-4 text-2xl text-gray-300">📅 April 7, 2025 | 📍 SACET Open Auditorium | 🕙 Starts at 10 AM</p>
+        <p class="mt-2 text-xl text-gray-400">Play, Create & Capture: Photography, Drawing & Chess Competitions</p>
+        <div class="mt-6">
+            <button onclick="downloadPoster()" class="glowing-btn px-6 py-3 text-lg font-semibold rounded-full">Download Poster</button>
+        </div>
+    </section>
+</body>
+</html>
